@@ -2,6 +2,8 @@ require 'rss'
 
 class WikiController < ApplicationController
 
+  impressionist
+
   before_filter :require_user, :only => [:new, :create, :edit, :update, :delete, :replace]
 
   def subdomain
@@ -53,7 +55,7 @@ class WikiController < ApplicationController
       set_sidebar :tags, @tagnames, {:videos => true}
       @wikis = DrupalTag.find_pages(@node.slug_from_path,30) if @node.has_tag('chapter') || @node.has_tag('tabbed:wikis')
 
-      @node.view
+      impressionist(@node.drupal_node_counter)
       @revision = @node.latest
       @title = @revision.title
     end
