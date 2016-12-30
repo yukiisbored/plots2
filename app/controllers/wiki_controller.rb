@@ -4,6 +4,8 @@ class WikiController < ApplicationController
 
   before_filter :require_user, :only => [:new, :create, :edit, :update, :delete, :replace]
 
+  impressionist
+  
   def subdomain
     url = "//#{request.host}/wiki/"
     case request.subdomain

@@ -3,6 +3,8 @@ class NotesController < ApplicationController
   respond_to :html
   before_filter :require_user, :only => [:create, :edit, :update, :delete, :rsvp]
 
+  impressionist
+
   def index
     @title = I18n.t('notes_controller.research_notes')
     set_sidebar
