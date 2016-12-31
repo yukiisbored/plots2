@@ -4,9 +4,5 @@ class DrupalNodeCounter < ActiveRecord::Base
 
   belongs_to :drupal_node, :foreign_key => 'nid', :dependent => :destroy
 
-  is_impressionable
-
-  def totalcount
-    impressionist_count(:filter=>:ip_address)
-  end
+  is_impressionable :counter_cache => true, :column_name => :totalcount, :unique => :ip_address
 end

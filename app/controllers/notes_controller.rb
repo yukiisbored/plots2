@@ -69,8 +69,7 @@ class NotesController < ApplicationController
 
     alert_and_redirect_moderated
 
-
-    impressionist(@node.drupal_node_counter, 'view', :unique => [:session_hash])
+    impressionist(@node.drupal_node_counter)
     @title = @node.latest.title
     @tags = @node.tags
     @tagnames = @tags.collect(&:name)
