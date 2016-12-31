@@ -32,7 +32,7 @@ class QuestionsController < ApplicationController
 
     alert_and_redirect_moderated
 
-    @node.view
+    impressionist(@node.drupal_node_counter, 'view', :unique => [:session_hash]
     @title = @node.latest.title
     @tags = @node.power_tag_objects('question')
     @tagnames = @tags.collect(&:name)

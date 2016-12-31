@@ -3,8 +3,6 @@ class NotesController < ApplicationController
   respond_to :html
   before_filter :require_user, :only => [:create, :edit, :update, :delete, :rsvp]
 
-  impressionist
-
   def index
     @title = I18n.t('notes_controller.research_notes')
     set_sidebar
@@ -71,7 +69,8 @@ class NotesController < ApplicationController
 
     alert_and_redirect_moderated
 
-    @node.view
+
+    impressionist(@node.drupal_node_counter, 'view', :unique => [:session_hash])
     @title = @node.latest.title
     @tags = @node.tags
     @tagnames = @tags.collect(&:name)
