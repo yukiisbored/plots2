@@ -473,11 +473,6 @@ class DrupalNode < ActiveRecord::Base
     self.tags.collect(&:name)
   end
 
-  # view counter is handled by controller
-  def view
-    DrupalNodeCounter.new({:nid => self.id}).save if self.drupal_node_counter.nil?
-  end
-
   # view count
   def totalcount
     DrupalNodeCounter.new({:nid => self.id}).save if self.drupal_node_counter.nil?
