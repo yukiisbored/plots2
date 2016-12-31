@@ -1,7 +1,5 @@
 class QuestionsController < ApplicationController
 
-  impressionist
-  
   def index
     @title = "Questions and Answers"
     set_sidebar

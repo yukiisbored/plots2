@@ -20,7 +20,7 @@ class MapController < ApplicationController
 
     # redirect_old_urls
 
-    @node.view
+    impressionist(@node.drupal_node_counter, 'view', :unique => [:session_hash])
     @title = @node.title
     @tags = @node.tags
     @tagnames = @tags.collect(&:name)
